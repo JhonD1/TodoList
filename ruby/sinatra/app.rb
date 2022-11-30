@@ -2,6 +2,10 @@ require 'sinatra'
 require 'sequel'
 
 get '/' do
+  erb :index
+end
+
+get '/add' do
   DB = Sequel.sqlite #create in memory temporay Database
 
   # drops table if it exists 
@@ -20,5 +24,4 @@ get '/' do
   @todo_list.insert(task: 'todo-list in rails', status: 'not done')
 
   puts @todo_list
-  erb :index
 end
