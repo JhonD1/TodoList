@@ -6,7 +6,7 @@ get '/' do
 end
 
 get '/add' do
-  DB = Sequel.sqlite #create in memory temporay Database
+  DB = Sequel.sqlite("todo.db") #create in memory temporay Database
 
   # drops table if it exists 
   DB.drop_table?(:todo)
