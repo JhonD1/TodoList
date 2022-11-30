@@ -1,4 +1,4 @@
-<h1>Hi, I'm located in the index</h1>
+<h1>Welcome to your todo-list</h1>
 
 <h2>what would you like to do?</h2>
 
@@ -7,3 +7,20 @@
   <li><a href="/remove">Remove a task</a></li>
   <li><a href="/delete">Delete all tasks</a></li>
 </ul>
+
+<p>Your tasks:</p>
+<table style="text-align: center; width: 50%">
+  <tr>
+    <th>Task no.</th>
+    <th>Task</th>
+    <th>Status</th>
+  </tr>
+
+  <% @todo_list.each do |task|%>
+    <tr>
+      <% task.values.each do |data| %> 
+      <td><%= data %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
