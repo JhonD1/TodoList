@@ -38,6 +38,13 @@ post '/add' do
   redirect "/"
 end
 
+get '/delete/:id' do
+  @todo_list = DB[:todo]
+  @todo_list.where(id: params[:id]).delete
+
+  redirect "/"
+end
+
 get '/delete' do
   DB.drop_table?(:todo)
   erb :no_task
