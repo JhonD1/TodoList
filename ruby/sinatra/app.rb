@@ -38,6 +38,21 @@ post '/add' do
   redirect "/"
 end
 
+get '/edit/:id' do
+  @todo_list = DB[:todo]
+  @task = @todo_list.where(id: params[:id])
+
+  erb :edit  
+end
+
+post '/edit/:id' do
+  @todo_list = DB[:todo]
+  task = @todo_list.where(id: params[:id])
+  task.update(task: params[:task], status: params[:status])
+
+  redirect '/'
+end
+
 get '/delete/:id' do
   @todo_list = DB[:todo]
   @todo_list.where(id: params[:id]).delete
