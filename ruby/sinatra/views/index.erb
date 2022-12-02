@@ -18,9 +18,10 @@
 
   <% @todo_list.each do |task|%>
     <tr>
-      <% task.values.each do |data| %> 
-      <td><%= data %></td>
-      <% end %>
+      <td><%= task[:id] %></td>
+      <td><%= task[:task] %></td>
+      <td><%= task[:status] %></td>
+      <td><a href="delete/<%=task[:id]%>">delete</a></td>
     </tr>
   <% end %>
 </table>
