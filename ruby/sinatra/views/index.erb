@@ -20,6 +20,7 @@
       <td><%= task[:id] %></td>
       <td><%= task[:task] %></td>
       <td><%= task[:status] %></td>
+      <td><a href="edit/<%=task[:id]%>">edit</a></td>
       <td><a href="delete/<%=task[:id]%>">delete</a></td>
     </tr>
   <% end %>
