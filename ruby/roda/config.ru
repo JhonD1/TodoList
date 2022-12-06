@@ -42,16 +42,14 @@ class App < Roda
     r.on 'edit' do
       r.is Integer do |id|
         todo_list = DB[:todo]
+        @task = todo_list.where(id: id)
 
         r.get do
-          @task = todo_list.where(id: id)
-          
           render('edit')
         end
 
         r.post do 
-          task = todo_list.where(id: id)
-          task.update(task: r.params['task'], status: r.params['status'])
+          @task.update(task: r.params['task'], status: r.params['status'])
 
           r.redirect '/'
         end
