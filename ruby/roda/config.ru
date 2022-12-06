@@ -26,9 +26,7 @@ class App < Roda
       end
     end
 
-    r.on 'hello' do
-      "prints hello?"
-
+    r.on 'add' do
       r.get do 
         render('index')
       end
