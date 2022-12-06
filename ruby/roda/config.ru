@@ -1,4 +1,6 @@
 require 'roda'
+require 'sequel'
+
 Roda.plugin :render
 
 class App < Roda
