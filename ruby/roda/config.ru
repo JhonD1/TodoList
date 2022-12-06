@@ -30,6 +30,13 @@ class App < Roda
       r.get do 
         render('add')
       end
+
+      r.post do
+        @todo_list = DB[:todo]
+        @todo_list.insert(task: r.params['task'], status: r.params['task_status'])
+
+        r.redirect '/'
+      end
     end
   end
 end
