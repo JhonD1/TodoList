@@ -1,6 +1,8 @@
 require 'roda'
+Roda.plugin :render
 
 class App < Roda
+
   route do |r|
     r.root do
       "Hello. Welcome to Index"
@@ -10,7 +12,7 @@ class App < Roda
       "prints hello?"
 
       r.get do 
-        "hello there welcome to the get in Hello route"
+        render('index')
       end
     end
   end
