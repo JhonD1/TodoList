@@ -39,6 +39,25 @@ class App < Roda
       end
     end
 
+    r.on 'edit' do
+      r.is Integer do |id|
+        todo_list = DB[:todo]
+
+        r.get do
+          @task = todo_list.where(id: id)
+          
+          render('edit')
+        end
+
+        r.post do 
+          task = todo_list.where(id: id)
+          task.update(task: r.params['task'], status: r.params['status'])
+
+          r.redirect '/'
+        end
+      end
+    end
+
     r.on 'delete' do
       r.is Integer do |id|
         r.get do
@@ -55,7 +74,6 @@ class App < Roda
           render('no_task')
         end
       end
-
     end
 
   end
