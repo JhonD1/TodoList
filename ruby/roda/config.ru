@@ -38,6 +38,14 @@ class App < Roda
         r.redirect '/'
       end
     end
+
+    r.on 'delete' do
+      r.get do
+        DB.drop_table?(:todo)
+        render('no_task')
+      end
+    end
+
   end
 end
 
