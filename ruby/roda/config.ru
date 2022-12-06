@@ -40,10 +40,22 @@ class App < Roda
     end
 
     r.on 'delete' do
-      r.get do
-        DB.drop_table?(:todo)
-        render('no_task')
+      r.is Integer do |id|
+        r.get do
+          @todo_list = DB[:todo]
+          @todo_list.where(id: id).delete
+          
+          r.redirect '/'
+        end
       end
+
+      r.is do 
+        r.get do
+          DB.drop_table?(:todo)
+          render('no_task')
+        end
+      end
+
     end
 
   end
