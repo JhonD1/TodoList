@@ -1,1 +1,27 @@
-<h1>This is the index page</h1>
+<h1>Welcome to your todo-list</h1>
+
+<h2>what would you like to do?</h2>
+
+<ul>
+  <li><a href="/add">Add to todo list</a></li>
+  <li><a href="/delete">Delete all tasks</a></li>
+</ul>
+
+<p>Your tasks:</p>
+<table style="text-align: center; width: 50%">
+  <tr>
+    <th>Task no.</th>
+    <th>Task</th>
+    <th>Status</th>
+  </tr>
+
+  <% @todo_list.each do |task|%>
+    <tr>
+      <td><%= task[:id] %></td>
+      <td><%= task[:task] %></td>
+      <td><%= task[:status] %></td>
+      <td><a href="edit/<%=task[:id]%>">edit</a></td>
+      <td><a href="delete/<%=task[:id]%>">delete</a></td>
+    </tr>
+  <% end %>
+</table>
