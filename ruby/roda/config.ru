@@ -28,7 +28,7 @@ class App < Roda
 
     r.on 'add' do
       r.get do 
-        render('index')
+        render('add')
       end
     end
   end
