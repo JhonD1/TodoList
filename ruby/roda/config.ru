@@ -7,7 +7,7 @@ class App < Roda
   DB = Sequel.connect("sqlite://todo.db") #create in memory temporay Database if it doesn't exist else it will just connect to it
 
   def make_table
-    # create a table called Todo with id, task, and status  as columns
+    # create a table called Todo with id, task, and status as columns
     DB.create_table? :todo do
       primary_key :id
       String :task
